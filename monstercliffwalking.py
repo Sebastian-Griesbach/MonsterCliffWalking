@@ -102,6 +102,7 @@ class MonsterCliffWalkingEnv(Env):
     metadata = {
         "render_modes": ["human", "rgb_array", "ansi"],
         "render_fps": 4,
+        "window_scaling": 2
     }
 
     def __init__(self, render_mode: Optional[str] = None):
@@ -156,9 +157,8 @@ class MonsterCliffWalkingEnv(Env):
         self.render_mode = render_mode
 
         # pygame utils
-        window_scale = 4
 
-        self.cell_size = (60*window_scale, 60*window_scale)
+        self.cell_size = (60*self.metadata["window_scaling"], 60*self.metadata["window_scaling"])
         self.window_size = (
             self.shape[1] * self.cell_size[1],
             self.shape[0] * self.cell_size[0],
@@ -329,7 +329,33 @@ class MonsterCliffWalkingEnv(Env):
             monsters = [
                 path.join(path.dirname(__file__), "img/monster_up.png"),
                 path.join(path.dirname(__file__), "img/monster_right.png"),
-                path.join(path.dirname(__file__), "img/monster_down.png"),where both the row and col start at 0).
+                path.join(path.dirname(__file__), "img/monster_down.png"),
+                path.join(path.dirname(__file__), "img/monster_left.png"),
+            ]
+            self.monster_images = [
+                pygame.transform.scale(pygame.image.load(f_name), self.cell_size)
+                for f_name in monsters
+            ]
+        if self.start_img is None:
+            file_name = path.join(path.dirname(__file__), "img/stool.png")
+            self.start_img = pygame.transform.scale(
+                pygame.image.load(file_name), self.cell_size
+            )
+        if self.goal_img is None:
+            file_name = path.join(path.dirname(__file__), "img/cookie.png")
+            self.goal_img = pygame.transform.scale(
+                pygame.image.load(file_name), self.cell_size
+            )
+        if self.mountain_bg_img is None:
+            bg_imgs = [
+                path.join(path.dirname(__file__), "img/mountain_bg1.png"),
+                path.join(path.dirname(__file__), "img/mountain_bg2.png"),
+            ]
+            self.mountain_bg_img = [
+                pygame.transform.scale(pygame.image.load(f_name), self.cell_size)
+                for f_name in bg_imgs
+            ]
+        if self.near_cliff_img is None:
             near_cliff_imgs = [
                 path.join(path.dirname(__file__), "img/mountain_near-cliff1.png"),
                 path.join(path.dirname(__file__), "img/mountain_near-cliff2.png"),
