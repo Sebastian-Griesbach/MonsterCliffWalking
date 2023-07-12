@@ -1,20 +1,15 @@
 # Monster Cliff Walking
 
- <center>
-
-<img src="img/demonstration.gif" width="120"/>
-</center>
+<img src="img/demonstration.gif" width="360"/>
 
 This environment is a modification of the [CliffWalking](https://gymnasium.farama.org/environments/toy_text/cliff_walking/) Toy Text environments of [Gymnasium](https://gymnasium.farama.org/).
 General Information:
-<center>
 
 | | |
 |---|---|
 |Action Space |`Discrete(4)`|
 |Observation Space |`Discrete(1728)`|
 |import| see below|
-</center>
 
 ```python
 gym.register(
