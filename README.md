@@ -2,7 +2,7 @@
 
 <img src="img/demonstration.gif" width="360"/>
 
-This environment is a modification of the [CliffWalking](https://gymnasium.farama.org/environments/toy_text/cliff_walking/) Toy Text environments of [Gymnasium](https://gymnasium.farama.org/).
+This environment is a modification of the [CliffWalking](https://gymnasium.farama.org/environments/toy_text/cliff_walking/) Toy Text environments from [Gymnasium](https://gymnasium.farama.org/).
 General Information:
 
 | | |
